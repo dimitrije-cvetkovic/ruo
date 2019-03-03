@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: server-ruo-service
+spec:
+  selector:
+    app: server-ruo
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 80
+  - name: https
+    protocol: TCP
+    port: 443
+    #targetPort: 9377
