@@ -3,12 +3,11 @@ kind: Service
 metadata:
   name: etcd-node1
   namespace: kube-system
-  labels:
-    run: etcd-node1
 spec:
   ports:
   - port: 80
+    targetPort: 2379
     protocol: TCP
   selector:
-    run: etcd-node1
+    app: etcd-node1
     namespace: kube-system
