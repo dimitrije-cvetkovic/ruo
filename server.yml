@@ -15,7 +15,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: server-container
-        image: nsiid2019/drugiserver:v1
+        image: nsiid2019/treciserver:v1
         ports:
         - containerPort: 80
         - containerPort: 443
