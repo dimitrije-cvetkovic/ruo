@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-sensor-actuator-app
+spec:
+  selector:
+    matchLabels:
+      app: bsaa
+  replicas: 1 # nije neophodno, default je 1
+  template:
+    metadata:
+      labels:
+        app: bsaa
+    spec:    
+      restartPolicy: Always # default as well; options: Always, OnFailure, and Never
+      volumes:
+      - name: shared-data
+        persistentVolumeClaim:
+            claimName: senact-pvc
+      containers:
+      - name: temperature-container
+        image: nsiid2019/tempsen:v1
+        volumeMounts:
+        - name: shared-data
+          mountPath: /data
+          
+      - name: pressure-container
+        image: nsiid2019/pressen:v1
+        volumeMounts:
+        - name: shared-data
+          mountPath: /data #gde u kontejneru da se mountuje volume   
+          
+      - name: led-container
+        image: nsiid2019/ledact:v1
+        volumeMounts:
+        - name: shared-data
+          mountPath: /data

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bsa-server-app
+spec:
+  selector:
+    matchLabels:
+      app: bsaa-server
+  replicas: 3 # 3 replike servera jer on samo vraca podatke, da bi uvek bio aktivan
+  template:
+    metadata:
+      labels:
+        app: bsaa-server
+    spec:    
+      restartPolicy: Always # default as well; options: Always, OnFailure, and Never
+      volumes:
+      - name: shared-data
+        persistentVolumeClaim:
+            claimName: senact-pvc
+      containers:
+      - name: server-container
+        image: nsiid2019/bsaa-server:v1
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        volumeMounts:
+        - name: shared-data
+          mountPath: /app/data
