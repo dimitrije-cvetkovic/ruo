@@ -6,7 +6,7 @@ metadata:
     type: local
 spec:
   capacity:
-    storage: 700Mi
+    storage: 600Mi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
