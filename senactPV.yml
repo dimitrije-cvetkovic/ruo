@@ -11,5 +11,5 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
   hostPath:
-    path: "~/PycharmProjects/test1"
+    path: "PycharmProjects"
     type: DirectoryOrCreate
