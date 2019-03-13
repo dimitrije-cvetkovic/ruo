@@ -3,6 +3,11 @@ kind: Ingress
 metadata:
   name: test-ingress
 spec:
-  backend:
-    serviceName: bsa-server-service
-    servicePort: 8080
+   rules:
+   - host: testing.com
+     http:
+       paths:
+       - path: /rgb
+         backend:
+           serviceName: bsa-server-service
+           servicePort: 8080
