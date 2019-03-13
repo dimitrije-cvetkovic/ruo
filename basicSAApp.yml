@@ -19,19 +19,19 @@ spec:
             claimName: senact-pvc
       containers:
       - name: temperature-container
-        image: nsiid2019/tempsen:v1
+        image: nsiid2019/tempsen:v2
         volumeMounts:
         - name: shared-data
           mountPath: /data
           
       - name: pressure-container
-        image: nsiid2019/pressen:v1
+        image: nsiid2019/pressen:v2
         volumeMounts:
         - name: shared-data
           mountPath: /data #gde u kontejneru da se mountuje volume   
           
       - name: led-container
-        image: nsiid2019/ledact:v1
+        image: nsiid2019/ledact:v2
         volumeMounts:
         - name: shared-data
           mountPath: /data
